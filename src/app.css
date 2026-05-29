@@ -1,0 +1,467 @@
+@import url('https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600;700&family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=Instrument+Serif:ital,wght@1,400&display=swap');
+
+
+:root {
+  /* Colors */
+  --color-accent: #85FDC6;
+  --color-accent-hover: #6df0b5;
+  --color-bg-light: #FAFAFA;
+  --color-bg-dark: #111111;
+  --color-text-main: #1A1A1A;
+  --color-text-sec: #666666;
+  --color-text-muted: #999999;
+  --color-white: #ffffff;
+  --color-border-light: rgba(26, 26, 26, 0.06);
+  --color-border-dark: rgba(255, 255, 255, 0.08);
+
+  /* Fonts */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-light);
+  color: var(--color-text-main);
+  line-height: 1.55;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--color-text-main);
+  letter-spacing: -0.03em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Glassmorphism Styles */
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03), inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  border-radius: 24px;
+  transition: var(--transition-smooth);
+}
+
+.glass-card-dark {
+  background: rgba(26, 26, 26, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  transition: var(--transition-smooth);
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-sec);
+}
+
+/* Selection */
+::selection {
+  background: rgba(133, 253, 198, 0.2);
+  color: var(--color-text-main);
+}
+
+/* Ticker Marquee Ticker */
+.marquee-container {
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 24px 0;
+  position: relative;
+  z-index: 10; /* Ensure the marquee banner sits above the faded card arc */
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--color-border-light);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+/* Remove top border on marquee that follows a hero section so it blends flush with the card arc */
+section + .marquee-container {
+  border-top: none;
+}
+
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+}
+
+.marquee-item {
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.marquee-star {
+  color: var(--color-accent);
+  font-size: 16px;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Utility Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Base grid layout */
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--space-4xl) var(--space-lg);
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: var(--space-2xl) var(--space-md);
+  }
+}
+
+/* ==========================================
+   Dark Theme (Variants D, E, F) Overrides
+   ========================================== */
+.app-layout.theme-dark {
+  --color-bg-light: #111111;
+  --color-text-main: #ffffff;
+  --color-text-sec: rgba(255, 255, 255, 0.7);
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+  --color-border-light: rgba(255, 255, 255, 0.08);
+
+  background-color: var(--color-bg-dark);
+  color: var(--color-white);
+  color-scheme: dark;
+}
+
+/* Scrollbar dark theme */
+.app-layout.theme-dark ::-webkit-scrollbar-track {
+  background: #111111;
+}
+.app-layout.theme-dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+.app-layout.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Navbar dark theme blur */
+.app-layout.theme-dark .navbar {
+  background: rgba(17, 17, 17, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Marquee dark theme background */
+.app-layout.theme-dark .marquee-container {
+  background-color: #111111 !important;
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.app-layout.theme-dark section + .marquee-container {
+  border-top: none !important;
+}
+
+/* Global button/CTA contrast overrides */
+.app-layout.theme-dark .get-started-cta,
+.app-layout.theme-dark .cta-primary-pill,
+.app-layout.theme-dark .giant-get-started-btn {
+  color: #111111 !important;
+}
+
+/* Feature icon and other icon containers on mint background */
+.app-layout.theme-dark .feature-icon-container {
+  color: #111111 !important;
+}
+
+/* Check circle in dark mode */
+.app-layout.theme-dark .check-circle {
+  background-color: var(--color-accent) !important;
+  color: #111111 !important;
+}
+
+/* Mission word reveal */
+.app-layout.theme-dark .reveal-word {
+  color: rgba(255, 255, 255, 0.25) !important;
+}
+.app-layout.theme-dark .reveal-word.active {
+  color: var(--color-white) !important;
+}
+
+/* AppShowcase Showcase Section */
+.app-layout.theme-dark .showcase-section {
+  background: linear-gradient(180deg, #111111 0%, #85FDC6 15%, #0b663b 65%, #111111 100%) !important;
+}
+
+/* Services: details preview card glass-card-light -> glass-card-dark look */
+.app-layout.theme-dark .details-preview-card {
+  background: rgba(26, 26, 26, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+.app-layout.theme-dark .form-mockup,
+.app-layout.theme-dark .qr-code-card,
+.app-layout.theme-dark .payout-card {
+  background: #1a1a1a !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+.app-layout.theme-dark .form-mockup .input-val {
+  background: #262626 !important;
+  color: #ffffff !important;
+}
+.app-layout.theme-dark .qr-svg rect[fill="#fff"] {
+  fill: #1a1a1a !important;
+}
+.app-layout.theme-dark .qr-svg rect[fill="#1A1A1A"] {
+  fill: #ffffff !important;
+}
+
+/* Hero A specific overrides */
+.app-layout.theme-dark .hero-section .text-accent-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #85FDC6 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+.app-layout.theme-dark .hero-section .cta-pill-inner {
+  background: #1e1e1e !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.app-layout.theme-dark .hero-section .cta-secondary-link {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.app-layout.theme-dark .hero-section .cta-secondary-link:hover {
+  color: #ffffff !important;
+}
+.app-layout.theme-dark .hero-section .canvas-connectors path {
+  stroke: rgba(255, 255, 255, 0.08) !important;
+}
+.app-layout.theme-dark .hero-section .canvas-grid-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 0) !important;
+}
+.app-layout.theme-dark .hero-section .core-logo-orb {
+  background: #111111 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 30px rgba(133, 253, 198, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.05) !important;
+}
+.app-layout.theme-dark .hero-section .partner-logo-item {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.app-layout.theme-dark .hero-section .metric-card {
+  background: rgba(26, 26, 26, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.1) !important;
+}
+.app-layout.theme-dark .hero-section .chart-svg line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+.app-layout.theme-dark .hero-section .timeline-row span.active {
+  background: rgba(133, 253, 198, 0.15) !important;
+  color: var(--color-accent) !important;
+}
+.app-layout.theme-dark .hero-section .live-ledger-single {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+.app-layout.theme-dark .hero-section .uptime-tick {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+.app-layout.theme-dark .hero-section .uptime-tick.green {
+  background: #28a745 !important;
+}
+.app-layout.theme-dark .hero-section .uptime-tick.yellow {
+  background: #ffc107 !important;
+}
+
+/* Hero B specific overrides */
+.app-layout.theme-dark .hero-b-section .text-mint-gradient {
+  background: linear-gradient(135deg, #85FDC6 0%, #b2ffd9 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+.app-layout.theme-dark .hero-b-section .cta-pill-b {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+.app-layout.theme-dark .hero-b-section .cta-pill-b:hover {
+  background-color: var(--color-accent) !important;
+  color: #111111 !important;
+}
+.app-layout.theme-dark .hero-b-section .bottom-banner-b {
+  background-color: #161616 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Hero C specific overrides */
+.app-layout.theme-dark .hero-c-section .cta-pill-c {
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+.app-layout.theme-dark .hero-c-section .cta-pill-c:hover {
+  background-color: #ffffff !important;
+  color: #111111 !important;
+}
+
+/* Custom premium hand-drawn highlight wrapper */
+.hero-highlight-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0 4px;
+}
+
+/* Emphasized word 'You' using the premium Instrument Serif italic */
+.hero-accent-you {
+  font-family: 'Instrument Serif', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  font-size: 1.12em !important; /* serif italic display fonts usually look slightly smaller, scale it up */
+  text-transform: none; /* keep lowercase/titlecase formatting */
+  color: #0b663b; /* Readable dark emerald green in light mode */
+  background: linear-gradient(135deg, #0b663b 0%, #16a085 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* Thin premium curved vector underline */
+.hero-underline-svg {
+  position: absolute;
+  bottom: -14px; /* Shifted down to accommodate the smile curve */
+  left: 0;
+  width: 100%;
+  height: 18px; /* Increased height to prevent vertical squashing/clipping of the smile arc */
+  pointer-events: none;
+  overflow: visible;
+}
+
+.hero-underline-svg path {
+  stroke: #0b663b; /* Solid accent color in light mode */
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
+  filter: drop-shadow(0 1px 2px rgba(11, 102, 59, 0.15));
+}
+
+/* Dark mode overrides */
+.app-layout.theme-dark .hero-accent-you {
+  color: var(--color-accent);
+  background: linear-gradient(135deg, var(--color-accent) 0%, #5be0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 25px rgba(133, 253, 198, 0.35); /* ambient text glow */
+}
+
+.app-layout.theme-dark .hero-underline-svg path {
+  stroke: var(--color-accent); /* Glowing neon green stroke in dark mode */
+  filter: drop-shadow(0 0 4px rgba(133, 253, 198, 0.5));
+}
+
+/* Apply HK Grotesk / Hanken Grotesk font family to all Hero section versions (A/B/C/D/E/F/G/H) */
+.hero-section,
+.hero-b-section,
+.hero-c-section,
+.hero-d-scroll-track,
+.hero-section *:not(.hero-accent-you):not(.hero-accent-you *),
+.hero-b-section *:not(.hero-accent-you):not(.hero-accent-you *),
+.hero-c-section *:not(.hero-accent-you):not(.hero-accent-you *),
+.hero-d-scroll-track *:not(.hero-accent-you):not(.hero-accent-you *) {
+  font-family: "HK Grotesk", "Hanken Grotesk", sans-serif !important;
+}
+
+/* Styled wide heading formatting for all hero titles */
+.hero-section h1,
+.hero-b-section h1,
+.hero-c-section h1,
+.hero-d-heading {
+  font-stretch: expanded !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 800 !important;
+}
+
