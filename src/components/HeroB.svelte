@@ -1,31 +1,18 @@
 <script>
   export let theme = "light";
-  import logoImg from "../assets/logo.png";
   import avatarMohamed from "../assets/testimonial_mohamed.png";
   import avatarFatmata from "../assets/testimonial_fatmata.png";
   import avatarMerchant from "../assets/african_merchant_profile.png";
-  import Card from "./Card.svelte";
+  import FlotCard from "./FlotCard.svelte";
 
-  // 18 credit cards structured for a seamless loop in the radial marquee
-  const cards = [
-    { type: "black", cardholder: "Fatmata Koroma", expiry: "12/28", cardNumber: "•••• •••• •••• 2243", cvv: "945" },
-    { type: "yellow", cardholder: "Mohamed Kamara", expiry: "04/27", cardNumber: "•••• •••• •••• 1357", cvv: "102" },
-    { type: "green", cardholder: "Aminata Sesay", expiry: "09/29", cardNumber: "•••• •••• •••• 1122", cvv: "704" },
-    { type: "glass", cardholder: "Alusine Kargbo", expiry: "11/26", cardNumber: "•••• •••• •••• 7654", cvv: "331" },
-    { type: "black", cardholder: "Sahr Bangura", expiry: "08/28", cardNumber: "•••• •••• •••• 9876", cvv: "522" },
-    { type: "yellow", cardholder: "Kadiatu Mansaray", expiry: "02/27", cardNumber: "•••• •••• •••• 4455", cvv: "889" },
-    { type: "green", cardholder: "Lansana Conteh", expiry: "05/29", cardNumber: "•••• •••• •••• 1212", cvv: "304" },
-    { type: "glass", cardholder: "Tenneh Kamara", expiry: "07/26", cardNumber: "•••• •••• •••• 8899", cvv: "415" },
-    { type: "black", cardholder: "Abu Bakar Diallo", expiry: "10/28", cardNumber: "•••• •••• •••• 5544", cvv: "921" },
-    { type: "yellow", cardholder: "Isatu Bah", expiry: "03/27", cardNumber: "•••• •••• •••• 6677", cvv: "115" },
-    { type: "green", cardholder: "Samuel Turay", expiry: "06/29", cardNumber: "•••• •••• •••• 2233", cvv: "407" },
-    { type: "glass", cardholder: "Mariama Jalloh", expiry: "01/26", cardNumber: "•••• •••• •••• 9988", cvv: "882" },
-    { type: "black", cardholder: "Ibrahim Fofanah", expiry: "11/28", cardNumber: "•••• •••• •••• 7766", cvv: "613" },
-    { type: "yellow", cardholder: "Yeabu Kabia", expiry: "07/27", cardNumber: "•••• •••• •••• 3344", cvv: "209" },
-    { type: "green", cardholder: "Musa Barrie", expiry: "12/29", cardNumber: "•••• •••• •••• 5566", cvv: "311" },
-    { type: "glass", cardholder: "Finda Konneh", expiry: "05/26", cardNumber: "•••• •••• •••• 4433", cvv: "552" },
-    { type: "black", cardholder: "Osman Tarawally", expiry: "09/28", cardNumber: "•••• •••• •••• 1155", cvv: "701" },
-    { type: "yellow", cardholder: "Zainab Dumbuya", expiry: "01/27", cardNumber: "•••• •••• •••• 8822", cvv: "993" }
+  // 18 credit cards cycling through silver/green/black for seamless radial loop
+  const cardTypes = [
+    "black", "silver", "green",
+    "silver", "black", "green",
+    "green", "silver", "black",
+    "black", "green", "silver",
+    "silver", "black", "green",
+    "green", "black", "silver"
   ];
 </script>
 
@@ -100,20 +87,13 @@
       <div class="radial-marquee_mask">
         <div class="radial-marquee_circle">
           <div class="radial-marquee_list">
-            {#each cards as card, index}
+            {#each cardTypes as cardType, index}
               <div 
                 class="radial-marquee_item"
                 style:transform="translateY(var(--radial-marquee--y-offset)) rotate({index * 20}deg)"
               >
                 <div class="radial-marquee_card">
-                  <Card 
-                    type={card.type}
-                    cardholder={card.cardholder}
-                    expiry={card.expiry}
-                    cardNumber={card.cardNumber}
-                    cvv={card.cvv}
-                    interactive={false}
-                  />
+                  <FlotCard type={cardType} />
                 </div>
               </div>
             {/each}
