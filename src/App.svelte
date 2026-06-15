@@ -12,7 +12,10 @@
   import Benefits from "./components/Benefits.svelte";
   import Testimonial from "./components/Testimonial.svelte";
   import CTA from "./components/CTA.svelte";
+  import DownloadModal from "./components/DownloadModal.svelte";
   import Lenis from "lenis";
+
+  let showDownloadModal = false;
 
   let variant = "c"; // "c" | "f" (Variant C is Centered Light, F is Centered Dark)
   let lenis;
@@ -74,7 +77,7 @@
 
 <div class="app-layout {['d', 'e', 'f', 'h'].includes(variant) ? 'theme-dark' : ''}">
   <!-- Global Navbar -->
-  <Header />
+  <Header onOpenDownload={() => showDownloadModal = true} />
 
   <!-- Main Scroll Container -->
   <main class="main-content">
@@ -93,10 +96,10 @@
       <HeroB theme="dark" />
     {:else if variant === "c"}
       <!-- Variant C: Enblex Centered Layout (Light) -->
-      <HeroC theme="light" />
+      <HeroC theme="light" onOpenDownload={() => showDownloadModal = true} />
     {:else if variant === "f"}
       <!-- Variant F: Enblex Centered Layout (Dark) -->
-      <HeroC theme="dark" />
+      <HeroC theme="dark" onOpenDownload={() => showDownloadModal = true} />
     {:else if variant === "g"}
       <!-- Variant G: Cosmotic Parallax Layout (Light) -->
       <HeroD theme="light" />
@@ -127,8 +130,12 @@
     <Testimonial />
 
     <!-- CTA & Footer -->
-    <CTA />
+    <CTA onOpenDownload={() => showDownloadModal = true} />
   </main>
+
+  {#if showDownloadModal}
+    <DownloadModal onClose={() => showDownloadModal = false} />
+  {/if}
 
   <!-- Symmetrical Floating Theme Switcher Toggle -->
   <div class="variant-switcher glass-card-dark">

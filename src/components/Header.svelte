@@ -1,5 +1,6 @@
 <script>
   import logoImg from "../assets/logo.png";
+  export let onOpenDownload = () => {};
 </script>
 
 <header class="navbar">
@@ -19,7 +20,7 @@
     </nav>
 
     <!-- Get Started CTA Button -->
-    <a href="https://pay.flotme.ai/" class="get-started-cta" target="_blank" rel="noopener noreferrer">
+    <a href="https://download.flotme.ai" class="get-started-cta" on:click|preventDefault={onOpenDownload}>
       <span>Get started</span>
       <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <line x1="5" y1="12" x2="19" y2="12"></line>

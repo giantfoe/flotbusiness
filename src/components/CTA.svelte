@@ -2,6 +2,7 @@
   import logoImg from "../assets/logo.png";
   import Card from "./Card.svelte";
 
+  export let onOpenDownload = () => {};
   let buttonHovered = false;
 </script>
 
@@ -32,11 +33,10 @@
     >
       <!-- Giant Floating Circle Button -->
       <a 
-        href="https://pay.flotme.ai/" 
-        target="_blank"
-        rel="noopener noreferrer"
+        href="https://download.flotme.ai" 
         class="giant-get-started-btn" 
         class:expand={buttonHovered}
+        on:click|preventDefault={onOpenDownload}
       >
         <span class="btn-text">Get Started</span>
       </a>

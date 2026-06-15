@@ -1,5 +1,6 @@
 <script>
   export let theme = "light";
+  export let onOpenDownload = () => {};
   import showcaseMockup from "../assets/app_showcase_mockup_c.png";
   import Card from "./Card.svelte";
   import logoImg from "../assets/logo.png";
@@ -39,7 +40,7 @@
     <!-- Double-Pill CTA (Centered) -->
     <div class="cta-double-pill">
       <div class="cta-pill-inner">
-        <a href="https://pay.flotme.ai/" class="cta-primary-pill" target="_blank" rel="noopener noreferrer">
+        <a href="https://download.flotme.ai" class="cta-primary-pill" on:click|preventDefault={onOpenDownload}>
           <span>Get started</span>
           <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <line x1="5" y1="12" x2="19" y2="12"></line>
