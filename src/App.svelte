@@ -14,7 +14,7 @@
   import CTA from "./components/CTA.svelte";
   import Lenis from "lenis";
 
-  let variant = "a"; // "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h"
+  let variant = "c"; // "c" | "f" (Variant C is Centered Light, F is Centered Dark)
   let lenis;
   let rafId;
 
@@ -22,10 +22,10 @@
     // Read from URL query param on mount
     const params = new URLSearchParams(window.location.search);
     const vParam = params.get("v") || params.get("variant");
-    if (["a", "b", "c", "d", "e", "f", "g", "h"].includes(vParam)) {
+    if (["c", "f"].includes(vParam)) {
       variant = vParam;
     } else {
-      variant = "a";
+      variant = "c";
     }
 
     // Initialize Lenis smooth scroll if the user doesn't prefer reduced motion
@@ -130,83 +130,38 @@
     <CTA />
   </main>
 
-  <!-- Symmetrical Floating 2-Row Variant Switcher -->
+  <!-- Symmetrical Floating Theme Switcher Toggle -->
   <div class="variant-switcher glass-card-dark">
-    <div class="switcher-row">
-      <span class="switcher-row-label">LIGHT</span>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'a' ? 'active' : ''}" 
-        on:click={() => setVariant('a')}
-      >
-        A
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'b' ? 'active' : ''}" 
-        on:click={() => setVariant('b')}
-      >
-        B
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'c' ? 'active' : ''}" 
-        on:click={() => setVariant('c')}
-      >
-        C
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'g' ? 'active' : ''}" 
-        on:click={() => setVariant('g')}
-      >
-        G
-      </div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div 
+      class="switcher-btn {variant === 'c' ? 'active' : ''}" 
+      on:click={() => setVariant('c')}
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5" />
+        <line x1="12" y1="1" x2="12" y2="3" />
+        <line x1="12" y1="21" x2="12" y2="23" />
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+        <line x1="1" y1="12" x2="3" y2="12" />
+        <line x1="21" y1="12" x2="23" y2="12" />
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+      </svg>
+      <span>Light</span>
     </div>
-    <div class="switcher-row">
-      <span class="switcher-row-label">DARK</span>
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'd' ? 'active' : ''}" 
-        on:click={() => setVariant('d')}
-      >
-        D
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'e' ? 'active' : ''}" 
-        on:click={() => setVariant('e')}
-      >
-        E
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'f' ? 'active' : ''}" 
-        on:click={() => setVariant('f')}
-      >
-        F
-      </div>
-      
-      <!-- svelte-ignore a11y-click-events-have-key-events -->
-      <!-- svelte-ignore a11y-no-static-element-interactions -->
-      <div 
-        class="switcher-btn {variant === 'h' ? 'active' : ''}" 
-        on:click={() => setVariant('h')}
-      >
-        H
-      </div>
+    
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <div 
+      class="switcher-btn {variant === 'f' ? 'active' : ''}" 
+      on:click={() => setVariant('f')}
+    >
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+      </svg>
+      <span>Dark</span>
     </div>
   </div>
 </div>
@@ -226,50 +181,36 @@
     flex-direction: column;
   }
 
-  /* Symmetrical Floating 2-Row Switcher Capsule */
+  /* Floating Switcher Capsule */
   .variant-switcher {
     position: fixed;
     bottom: 28px;
     right: 28px;
     z-index: 9999;
-    padding: 8px 12px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border-radius: 18px;
-    background: rgba(17, 17, 17, 0.9);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.1);
-  }
-
-  .switcher-row {
+    padding: 4px;
     display: flex;
     align-items: center;
-    gap: 6px;
-  }
-
-  .switcher-row-label {
-    font-family: var(--font-body);
-    font-size: 8px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.4);
-    width: 36px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    gap: 4px;
+    border-radius: 30px;
+    background: rgba(17, 17, 17, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), inset 0 1px 1.5px rgba(255, 255, 255, 0.15);
   }
 
   .switcher-btn {
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 20px;
     font-family: var(--font-body);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: var(--transition-smooth);
     user-select: none;
     text-align: center;
-    min-width: 28px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
   .switcher-btn:hover {
@@ -294,19 +235,14 @@
     .variant-switcher {
       bottom: 16px;
       right: 16px;
-      left: 16px;
-      padding: 8px;
-      border-radius: 14px;
-    }
-    
-    .switcher-row {
-      width: 100%;
-      justify-content: space-between;
+      left: auto;
+      padding: 4px;
+      border-radius: 30px;
     }
     
     .switcher-btn {
-      flex-grow: 1;
-      padding: 5px;
+      padding: 6px 12px;
+      font-size: 11px;
     }
   }
 </style>

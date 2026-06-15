@@ -28,7 +28,6 @@
 <section class="hero-c-section {theme}" style:--scroll-y={scrollY}>
   <!-- Top Intro Section -->
   <div class="hero-c-top">
-    <span class="hero-c-subtitle">Your Business, in Perfect Rhythm.</span>
     <h1 class="hero-c-title">
       Built With <br />
       <span class="hero-accent-you">You</span> In Mind.
@@ -37,14 +36,26 @@
       Take control of your revenue with our all-in-one payments app. Accept money, track progress, and focus on growing your business—without the overwhelm.
     </p>
 
-    <!-- Outlined Pill CTA -->
-    <a href="https://pay.flotme.ai/" class="cta-pill-c" target="_blank" rel="noopener noreferrer">
-      <span>TRY IT FOR FREE</span>
-      <svg class="arrow-icon-c" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </a>
+    <!-- Double-Pill CTA (Centered) -->
+    <div class="cta-double-pill">
+      <div class="cta-pill-inner">
+        <a href="https://pay.flotme.ai/" class="cta-primary-pill" target="_blank" rel="noopener noreferrer">
+          <span>Get started</span>
+          <svg class="arrow-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+        <a href="https://wa.me/23299800100" class="cta-secondary-link" target="_blank" rel="noopener noreferrer">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 2.01 14.069.99 11.519.99 6.086.99 1.662 5.361 1.658 10.79c-.001 1.749.463 3.454 1.343 4.966l-.993 3.627 3.73-.977c1.472.803 3.109 1.229 4.899 1.23h.002z"/>
+            <path d="M12.008 1.99c-4.838 0-8.775 3.905-8.778 8.706-.001 1.637.458 3.23 1.328 4.629l.102.164-.783 2.859 2.951-.762.158.093c1.336.792 2.862 1.209 4.437 1.21h.002c4.837 0 8.774-3.906 8.778-8.707.002-2.327-.91-4.515-2.57-6.175s-3.87-2.56-6.175-2.56-6.175.002-8.778 8.707zm5.116 11.942c-.276-.138-1.636-.807-1.89-.899-.253-.092-.437-.138-.621.138-.184.276-.713.899-.874 1.084-.161.184-.322.207-.598.069-.276-.138-1.166-.43-2.22-1.371-.82-.732-1.374-1.636-1.535-1.912-.161-.276-.017-.426.121-.564.124-.124.276-.322.414-.483.138-.161.184-.276.276-.46.092-.184.046-.345-.023-.483-.069-.138-.621-1.496-.851-2.048-.224-.54-.469-.466-.621-.474-.161-.008-.345-.008-.529-.008s-.483.069-.736.345c-.253.276-.966.943-.966 2.3s.989 2.668 1.127 2.852c.138.184 1.947 2.974 4.717 4.167.659.284 1.173.454 1.573.581.662.21 1.265.18 1.741.11.531-.079 1.636-.667 1.867-1.31.23-.644.23-1.196.161-1.31-.069-.115-.253-.207-.529-.345z"/>
+          </svg>
+          <span>Chat on WhatsApp</span>
+          <span class="pulse-dot-green"></span>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- Center Graphic Stage with Mesh Gradient Backdrop -->
@@ -139,7 +150,7 @@
     position: relative;
     width: 100%;
     background-color: var(--color-bg-light);
-    padding-top: 140px; /* navbar spacing */
+    padding-top: 100px; /* navbar spacing */
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -155,7 +166,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 16px;
     z-index: 5;
   }
 
@@ -184,37 +195,114 @@
     max-width: 600px;
   }
 
-  /* Outlined Pill CTA */
-  .cta-pill-c {
-    display: inline-flex;
+  /* Double-Pill CTA button */
+  .cta-double-pill {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .cta-pill-inner {
+    display: flex;
     align-items: center;
-    gap: 12px;
-    border: 1px solid var(--color-text-main);
-    color: var(--color-text-main);
-    padding: 12px 28px;
+    background: #ffffff;
+    border: 1px solid var(--color-border-light);
     border-radius: 100px;
+    padding: 5px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    gap: 8px;
+  }
+
+  :global(.theme-dark) .cta-pill-inner {
+    background: #1e1e1e !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  .cta-primary-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: var(--font-body);
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    background: transparent;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--color-text-main);
+    background-color: var(--color-accent);
+    padding: 10px 22px;
+    border-radius: 100px;
+    box-shadow: 0 2px 8px rgba(133, 253, 198, 0.25);
     transition: var(--transition-smooth);
-    margin-top: 8px;
   }
 
-  .cta-pill-c:hover {
-    background-color: var(--color-text-main);
-    color: var(--color-white);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  :global(.theme-dark) .cta-primary-pill {
+    color: #111111 !important;
   }
 
-  .arrow-icon-c {
+  .cta-primary-pill:hover {
+    background-color: var(--color-accent-hover);
+    transform: scale(1.02);
+    box-shadow: 0 4px 14px rgba(133, 253, 198, 0.4);
+  }
+
+  .cta-primary-pill:hover .arrow-icon {
+    transform: translateX(3px);
+  }
+
+  .arrow-icon {
     transition: transform 0.3s ease;
   }
 
-  .cta-pill-c:hover .arrow-icon-c {
-    transform: translateX(4px);
+  .cta-secondary-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-sec);
+    padding: 0 16px 0 8px;
+    transition: var(--transition-smooth);
+  }
+
+  :global(.theme-dark) .cta-secondary-link {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+
+  .cta-secondary-link:hover {
+    color: var(--color-text-main);
+  }
+
+  :global(.theme-dark) .cta-secondary-link:hover {
+    color: #ffffff !important;
+  }
+
+  .whatsapp-icon {
+    color: #25d366;
+  }
+
+  .pulse-dot-green {
+    width: 6px;
+    height: 6px;
+    background-color: #25d366;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+  }
+
+  .pulse-dot-green::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: #25d366;
+    animation: pulse-ring-green 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+
+  @keyframes pulse-ring-green {
+    0% { transform: scale(0.33); opacity: 1; }
+    80%, 100% { transform: scale(3.5); opacity: 0; }
   }
 
   /* Center Stage and Mesh Gradient Backdrop */
@@ -225,7 +313,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 40px;
+    margin-top: 10px;
     z-index: 2;
   }
 
@@ -300,7 +388,7 @@
     position: relative;
     width: 100%;
     max-width: 1200px;
-    height: 860px;
+    height: 720px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -308,7 +396,7 @@
   }
 
   .phone-hand-container {
-    width: 900px;
+    width: 720px;
     height: auto;
     z-index: 8; /* Phone and Hand are now a layer above the cards */
     display: flex;
@@ -351,13 +439,13 @@
 
   .card-orbit-left {
     left: -60px;
-    bottom: 360px;
+    bottom: 300px;
     --parallax-speed: -0.15px;
   }
 
   .card-orbit-right {
     right: -60px;
-    bottom: 280px;
+    bottom: 230px;
     --parallax-speed: -0.22px;
   }
 
