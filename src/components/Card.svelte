@@ -1,5 +1,7 @@
 <script>
   import logoImg from "../assets/logo.png";
+  import cardSilverImg from "../assets/card_silver.png";
+  import cardGreenImg from "../assets/card_green.png";
   
   export let cardholder = "Adam Erickson";
   export let expiry = "07/23";
@@ -51,195 +53,45 @@
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div 
-  class="credit-card card-{type} {isHovered ? 'hovered' : ''}"
+  class="credit-card card-img-variant card-{type} {isHovered ? 'hovered' : ''}"
   on:mousemove={handleMouseMove}
   on:mouseenter={handleMouseEnter}
   on:mouseleave={handleMouseLeave}
   style:transform={interactive ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${isHovered ? 1.04 : 1}, ${isHovered ? 1.04 : 1}, 1)` : ''}
 >
-  {#if type === 'glass-back'}
-    <!-- Back of the card -->
-    <div class="card-back-strip"></div>
-    <div class="card-back-info">
-      <div class="cvv-container">
-        <span class="label">CVV</span>
-        <span class="value">{cvv}</span>
-      </div>
-      <div class="signature-line">
-        <span>MIA J 8 85937858 07/23</span>
-      </div>
-    </div>
-    <div class="card-branding-back">
-      <div class="flot-card-logo">
-        <img src={logoImg} class="flot-card-logo-img" alt="Flot logo" />
-        <span class="logo-text">Flot</span>
-      </div>
-    </div>
-  {:else if type === 'black'}
-    <!-- Front of the Ultra Black Card -->
-    <div class="card-noise"></div>
-    {#if showGlare}
-        <div 
-          class="glare-layer" 
-          style:background="radial-gradient(circle at {glareX}px {glareY}px, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 65%)"
-        ></div>
-      {/if}
-      <div class="ultra-black-card-content">
-        <div class="ultra-black-logo-container">
-          <img src={logoImg} class="flot-card-logo-img black-card-logo" alt="Flot logo" />
-          <div class="ultra-black-label">ULTRA BLACK CARD</div>
+  {#if type === 'black' || type === 'glass'}
+    <img src={cardSilverImg} class="card-image-render" alt="Flot Visa Platinum Card" />
+  {:else if type === 'green' || type === 'yellow'}
+    <img src={cardGreenImg} class="card-image-render" alt="Flot Visa Classic Card" />
+  {:else}
+    {#if type === 'glass-back'}
+      <!-- Back of the card -->
+      <div class="card-back-strip"></div>
+      <div class="card-back-info">
+        <div class="cvv-container">
+          <span class="label">CVV</span>
+          <span class="value">{cvv}</span>
         </div>
-        
-        <div class="ultra-black-chip-wifi">
-          <svg class="card-chip-silver" viewBox="0 0 100 80" width="34" height="27">
-            <defs>
-              <linearGradient id="chip-silver-{type}" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ffffff" />
-                <stop offset="25%" stop-color="#e8e8e8" />
-                <stop offset="55%" stop-color="#b5b5b5" />
-                <stop offset="85%" stop-color="#f2f2f2" />
-                <stop offset="100%" stop-color="#7a7a7a" />
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="100" height="80" rx="10" fill="url(#chip-silver-{type})" stroke="#8a8a8a" stroke-width="1" />
-            <path d="M 0,26 H 100 M 0,54 H 100 M 30,0 V 80 M 70,0 V 80" fill="none" stroke="rgba(0, 0, 0, 0.25)" stroke-width="1.5" />
-            <path d="M 30,26 C 30,42 70,42 70,26" fill="none" stroke="rgba(0, 0, 0, 0.25)" stroke-width="1.5" />
-            <rect x="42" y="32" width="16" height="16" rx="3" fill="none" stroke="rgba(0, 0, 0, 0.25)" stroke-width="1" />
-          </svg>
-        </div>
-        
-        <div class="ultra-black-number">{cardNumber}</div>
-        
-        <div class="ultra-black-footer">
-          <div class="ultra-black-holder">{cardholder}</div>
-          
-          <div class="ultra-black-meta">
-            <div class="meta-item">
-              <span class="meta-label">Expiry Date:</span>
-              <span class="meta-val">{expiry}</span>
-            </div>
-            <div class="meta-divider">|</div>
-            <div class="meta-item">
-              <span class="meta-label">CVV/CVC:</span>
-              <span class="meta-val">{cvv}</span>
-            </div>
-          </div>
-          
-          <div class="ultra-black-brand">
-            <svg class="mc-logo" viewBox="0 0 36 24" width="30" height="20">
-              <circle cx="12" cy="12" r="10" fill="#EB001B" />
-              <circle cx="24" cy="12" r="10" fill="#F79E1B" opacity="0.9" />
-            </svg>
-          </div>
+        <div class="signature-line">
+          <span>MIA J 8 85937858 07/23</span>
         </div>
       </div>
-    {:else}
-      <!-- Front of the other cards (yellow, green, glass) -->
-      <!-- Tactile matte micro-noise overlay -->
-      <div class="card-noise"></div>
-
-      <!-- Shifting Holographic Glare Overlay -->
-      {#if showGlare}
-        <div 
-          class="glare-layer" 
-          style:background="radial-gradient(circle at {glareX}px {glareY}px, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 65%)"
-        ></div>
-      {/if}
-
-      <!-- Background Artwork Waves based on Card Type -->
-      {#if type === 'yellow'}
-        <svg class="card-bg-artwork" viewBox="0 0 320 200" width="100%" height="100%">
-          <!-- Mesh background -->
-          <line x1="-20" y1="40" x2="180" y2="240" stroke="rgba(26, 26, 26, 0.04)" stroke-width="1" />
-          <line x1="20" y1="-20" x2="280" y2="240" stroke="rgba(26, 26, 26, 0.04)" stroke-width="1" />
-          <line x1="80" y1="-20" x2="340" y2="240" stroke="rgba(26, 26, 26, 0.04)" stroke-width="1" />
-          <line x1="180" y1="-20" x2="360" y2="160" stroke="rgba(26, 26, 26, 0.04)" stroke-width="1" />
-        </svg>
-      {:else if type === 'green'}
-        <svg class="card-bg-artwork" viewBox="0 0 320 200" width="100%" height="100%">
-          <!-- Intersecting organic waves -->
-          <path d="M -20 180 C 60 140, 120 180, 200 120 C 260 80, 300 120, 340 60" fill="none" stroke="rgba(12, 51, 17, 0.05)" stroke-width="1.5" />
-          <path d="M -20 200 C 60 160, 120 200, 200 140 C 260 100, 300 140, 340 80" fill="none" stroke="rgba(12, 51, 17, 0.03)" stroke-width="1.2" />
-        </svg>
-      {:else}
-        <svg class="card-bg-artwork" viewBox="0 0 320 200" width="100%" height="100%">
-          <path d="M -20 80 Q 120 160 340 40" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="2" />
-        </svg>
-      {/if}
-
-      <div class="card-header">
-        {#if type === 'yellow'}
-          <!-- Stylized Mastercard brand circles -->
-          <svg class="brand-logo-svg mc-logo" viewBox="0 0 36 24" width="36" height="24">
-            <circle cx="12" cy="12" r="10" fill="#EB001B" />
-            <circle cx="24" cy="12" r="10" fill="#F79E1B" opacity="0.85" />
-          </svg>
-        {:else}
-          <!-- Visa logo SVG -->
-          <svg class="brand-logo-svg visa-logo" class:visa-dark={type === 'green' || type === 'glass'} viewBox="0 0 48 16" width="48" height="16">
-            <path d="M18.2 1.2L15.3 14.8H12L9.2 3.6C8.9 2.5 8.1 1.9 7 1.7L1.8 1.4V0.8H8.8C9.7 0.8 10.5 1.4 10.7 2.4L12.5 12L15.8 0.8H18.2V1.2ZM34 9.8C34.1 6.5 29.3 6.3 29.3 4.7C29.3 4.2 29.8 3.6 30.9 3.5C31.5 3.4 33.1 3.3 34.1 3.8L34.7 0.9C33.8 0.6 32.7 0.5 31.4 0.5C27.9 0.5 25.4 2.3 25.4 5.3C25.4 9.1 30.6 9.3 30.6 11.2C30.6 11.8 30 12.3 28.8 12.5C27.9 12.6 26.5 12.5 25.5 12L24.9 14.9C25.9 15.4 27.3 15.6 28.7 15.6C32.4 15.6 34 13.6 34 9.8ZM45.7 14.8H48.8L46.1 1.2H43.2C42.5 1.2 41.9 1.6 41.6 2.3L36.3 14.8H39.6L40.3 12.9H44.3L44.7 14.8H45.7ZM41 10.7L42.8 5.7L43.8 10.7H41ZM23.3 1.2H20.4L16.2 14.8H19.5L23.3 1.2Z" fill="currentColor" />
-          </svg>
-        {/if}
-        <div class="chip-and-wifi">
-          <!-- High-Fidelity Golden/Silver EMV Chip -->
-          <svg class="card-chip" viewBox="0 0 100 80" width="38" height="30">
-            <defs>
-              <linearGradient id="chip-gold-{type}" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#ffd700" />
-                <stop offset="25%" stop-color="#fff5cc" />
-                <stop offset="55%" stop-color="#d4af37" />
-                <stop offset="85%" stop-color="#f3e5ab" />
-                <stop offset="100%" stop-color="#aa7c11" />
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="100" height="80" rx="10" fill="url(#chip-gold-{type})" stroke="#9c7a1c" stroke-width="1" />
-            <path d="M 0,26 H 100 M 0,54 H 100 M 30,0 V 80 M 70,0 V 80" fill="none" stroke="rgba(0, 0, 0, 0.28)" stroke-width="1.5" />
-            <path d="M 30,26 C 30,42 70,42 70,26" fill="none" stroke="rgba(0, 0, 0, 0.28)" stroke-width="1.5" />
-            <rect x="42" y="32" width="16" height="16" rx="3" fill="none" stroke="rgba(0, 0, 0, 0.3)" stroke-width="1" />
-          </svg>
-          
-          <!-- Contactless Wifi SVG -->
-          <svg class="wifi-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M5 12a10 10 0 0 1 14 0" />
-            <path d="M8.5 15.5a5 5 0 0 1 7 0" />
-            <path d="M12 18h.01" />
-          </svg>
-        </div>
-      </div>
-
-      <!-- Huge FL initials stretching across the card for branding (on glass cards) -->
-      {#if type === 'glass'}
-        <div class="large-av-bg">FL</div>
-      {/if}
-
-      <div class="card-body">
-        <div class="card-number">{cardNumber}</div>
-        
-        <div class="card-details-row">
-          <div class="detail-group">
-            <span class="detail-label">Card Holder</span>
-            <span class="detail-value">{cardholder}</span>
-          </div>
-          <div class="detail-group">
-            <span class="detail-label">Expired</span>
-            <span class="detail-value">{expiry}</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-footer">
-        <div class="card-branding">
+      <div class="card-branding-back">
+        <div class="flot-card-logo">
           <img src={logoImg} class="flot-card-logo-img" alt="Flot logo" />
           <span class="logo-text">Flot</span>
         </div>
-        
-        <!-- Interactive Holographic security seal -->
-        <div 
-          class="hologram-seal" 
-          style:background-position="{rotateY * 3.5}% {rotateX * 3.5}%"
-        ></div>
       </div>
     {/if}
+  {/if}
+
+  <!-- Shifting Holographic Glare Overlay -->
+  {#if showGlare}
+    <div 
+      class="glare-layer" 
+      style:background="radial-gradient(circle at {glareX}px {glareY}px, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 65%)"
+    ></div>
+  {/if}
 </div>
 
 <style>
@@ -732,5 +584,29 @@
     padding: 4.5px;
     background: #1e1f24;
     border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Image Render & Reset Overrides */
+  .card-image-render {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  .credit-card.card-img-variant {
+    padding: 0;
+    background: none !important;
+    border: none !important;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+  }
+
+  .credit-card.card-img-variant.hovered {
+    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
   }
 </style>
