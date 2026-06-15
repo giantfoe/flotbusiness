@@ -30,34 +30,34 @@
 
   const features = [
     {
-      title: "QR Stands",
-      desc: "Scan and pay in-person for walk-in retail stores.",
-      icon: "store"
+      title: "Send & Receive Money",
+      desc: "Send and receive money securely, anytime and anywhere.",
+      icon: "send"
     },
     {
-      title: "Wearable QR Tags",
-      desc: "Instant contactless offline checkout with no bulky POS terminal.",
-      icon: "tag"
+      title: "Digital Wallet",
+      desc: "Manage your digital wallet from a single app, wherever you are.",
+      icon: "wallet"
     },
     {
-      title: "WhatsApp Checkouts",
-      desc: "Sell products and accept payments directly in customer chats.",
-      icon: "chat"
-    },
-    {
-      title: "Payment Links",
-      desc: "Share a customized secure link to collect customer payments instantly.",
-      icon: "link"
-    },
-    {
-      title: "Global Reach",
-      desc: "Accept card payments from customers in over 150+ countries.",
+      title: "Virtual Visa Cards",
+      desc: "Access Flot Virtual Visa Cards for fast, secure online payments.",
       icon: "globe"
     },
     {
-      title: "Instant Settlements",
-      desc: "Funds settled directly to your wallet or bank account immediately.",
-      icon: "bolt"
+      title: "Physical Visa Card",
+      desc: "Use your Flot Physical Visa Card for purchases and ATM withdrawals where accepted.",
+      icon: "card"
+    },
+    {
+      title: "Merchant Payments",
+      desc: "Make merchant payments quickly and securely from your phone.",
+      icon: "store"
+    },
+    {
+      title: "Real-Time Activity",
+      desc: "View your transaction history and account activity in real time.",
+      icon: "activity"
     }
   ];
 </script>
@@ -73,34 +73,26 @@
 
     <!-- Right Column: Bullet Points List -->
     <div class="showcase-content">
-      <div class="showcase-sublabel">Offline & Online Payments</div>
-      <h2 class="showcase-heading">Everything you need to accept payments</h2>
+      <div class="showcase-sublabel">Key Features</div>
+      <h2 class="showcase-heading">Everything you need, in one app</h2>
       <p class="showcase-paragraph">
-        Accept payments from your customers wherever they are. Sell in person, online, or inside chat apps with our lightweight, premium integrations.
+        Whether you're sending money, receiving payments, managing your account, or using your Flot Visa card, Flot gives you a simple, reliable way to access financial services wherever you are.
       </p>
 
       <ul class="bullet-list">
         {#each features as feature}
           <li class="bullet-item">
             <div class="bullet-icon-container">
-              {#if feature.icon === 'store'}
+              {#if feature.icon === 'send'}
                 <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" />
+                  <line x1="22" y1="2" x2="11" y2="13" />
+                  <polygon points="22 2 15 22 11 13 2 9 22 2" />
                 </svg>
-              {:else if feature.icon === 'tag'}
+              {:else if feature.icon === 'wallet'}
                 <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-                  <line x1="7" y1="7" x2="7.01" y2="7" />
-                </svg>
-              {:else if feature.icon === 'chat'}
-                <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                </svg>
-              {:else if feature.icon === 'link'}
-                <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                  <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                  <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                  <path d="M18 12a2 2 0 0 0 0 4h4v-4z" />
                 </svg>
               {:else if feature.icon === 'globe'}
                 <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -108,9 +100,19 @@
                   <line x1="2" y1="12" x2="22" y2="12" />
                   <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                 </svg>
-              {:else if feature.icon === 'bolt'}
+              {:else if feature.icon === 'card'}
                 <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                  <rect x="2" y="5" width="20" height="14" rx="2" />
+                  <line x1="2" y1="10" x2="22" y2="10" />
+                </svg>
+              {:else if feature.icon === 'store'}
+                <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                  <polyline points="9 22 9 12 15 12 15 22" />
+                </svg>
+              {:else if feature.icon === 'activity'}
+                <svg viewBox="0 0 24 24" class="bullet-svg" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                 </svg>
               {/if}
             </div>
