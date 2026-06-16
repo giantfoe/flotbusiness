@@ -7,8 +7,8 @@
   let targetCurrency = "USD";
   let baseAmount = 2250;
   
-  // Static conversion rate (1 USD = 22.5 SLE)
-  const exchangeRate = 22.5; 
+  // Static conversion rate (1 USD = 23.4 SLE)
+  const exchangeRate = 23.4;
   
   $: targetAmount = calculateConversion(baseAmount, baseCurrency);
 
@@ -228,7 +228,7 @@
 
               <!-- Exchange rate sub-info -->
               <div class="rate-subinfo">
-                1 USD = 22.5 SLE (Local Market Rate)
+                1 USD = 23.4 SLE (Local Market Rate)
               </div>
             </div>
           </div>
