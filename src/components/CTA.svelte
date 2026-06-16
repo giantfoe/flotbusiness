@@ -43,14 +43,14 @@
 
       <!-- Card Fan Row -->
       <div class="card-fan-row">
-        <!-- Card 1: Yellow (leftmost) - Mastercard representation -->
+        <!-- Card 1: Glass (leftmost) - Visa representation -->
         <div class="cta-card card-pos-left" class:shift={buttonHovered}>
-          <Card type="yellow" cardholder="Mohamed B." expiry="12/28" cardNumber="5412 7588 1922 4311" />
+          <Card type="glass" cardholder="Aminata K." expiry="09/27" cardNumber="4000 1288 9576 1934" />
         </div>
 
-        <!-- Card 2: Glass (middle) - Visa representation -->
+        <!-- Card 2: Yellow (middle) - Mastercard representation -->
         <div class="cta-card card-pos-mid" class:shift={buttonHovered}>
-          <Card type="glass" cardholder="Aminata K." expiry="09/27" cardNumber="4000 1288 9576 1934" />
+          <Card type="yellow" cardholder="Mohamed B." expiry="12/28" cardNumber="5412 7588 1922 4311" />
         </div>
 
         <!-- Card 3: Black (rightmost) - Flot Mint representation -->

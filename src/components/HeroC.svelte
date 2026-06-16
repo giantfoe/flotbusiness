@@ -63,10 +63,35 @@
   <div class="hero-c-stage">
     <!-- Mesh Gradient Orb Background -->
     <div class="mesh-backdrop">
-      <div class="glow-orb orb-pink"></div>
-      <div class="glow-orb orb-orange"></div>
-      <div class="glow-orb orb-yellow"></div>
-      <div class="glow-orb orb-blue"></div>
+      <!-- Giant blurred background orbs -->
+      <div class="mesh-orbs">
+        <div class="glow-orb orb-mint-main"></div>
+        <div class="glow-orb orb-mint-accent"></div>
+        <div class="glow-orb orb-cyan"></div>
+        <div class="glow-orb orb-emerald"></div>
+      </div>
+
+      <!-- Dotted grid background overlay (not blurred) -->
+      <div class="bg-dot-grid"></div>
+
+      <!-- Floating particle system (not blurred) -->
+      <div class="floating-particles">
+        <div class="floating-particle" style="--d: 0s; --x: 12%; --s: 6px; --t: 9s;"></div>
+        <div class="floating-particle" style="--d: 1.5s; --x: 32%; --s: 4px; --t: 12s;"></div>
+        <div class="floating-particle" style="--d: 3s; --x: 52%; --s: 7px; --t: 10s;"></div>
+        <div class="floating-particle" style="--d: 0.5s; --x: 72%; --s: 5px; --t: 14s;"></div>
+        <div class="floating-particle" style="--d: 4s; --x: 88%; --s: 6px; --t: 8s;"></div>
+        <div class="floating-particle" style="--d: 2s; --x: 22%; --s: 3px; --t: 13s;"></div>
+        <div class="floating-particle" style="--d: 5s; --x: 42%; --s: 5px; --t: 11s;"></div>
+        <div class="floating-particle" style="--d: 2.5s; --x: 62%; --s: 8px; --t: 15s;"></div>
+        <div class="floating-particle" style="--d: 1s; --x: 94%; --s: 4px; --t: 9s;"></div>
+        <div class="floating-particle" style="--d: 6s; --x: 6%; --s: 7px; --t: 16s;"></div>
+        <div class="floating-particle" style="--d: 3.5s; --x: 26%; --s: 5px; --t: 12s;"></div>
+        <div class="floating-particle" style="--d: 4.5s; --x: 66%; --s: 8px; --t: 11s;"></div>
+        <div class="floating-particle" style="--d: 7s; --x: 46%; --s: 6px; --t: 10s;"></div>
+        <div class="floating-particle" style="--d: 5.5s; --x: 76%; --s: 5px; --t: 13s;"></div>
+        <div class="floating-particle" style="--d: 8s; --x: 36%; --s: 4px; --t: 14s;"></div>
+      </div>
     </div>
 
     <!-- Centered Visual Showcase Container -->
@@ -321,14 +346,28 @@
   /* Vibrant Mesh Orb Background */
   .mesh-backdrop {
     position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .mesh-orbs {
+    position: absolute;
     top: 5%;
     left: 10%;
     right: 10%;
     bottom: 5%;
-    filter: blur(80px);
-    opacity: 0.55;
+    filter: blur(100px);
+    opacity: 0.65;
     z-index: 1;
     pointer-events: none;
+  }
+
+  :global(.app-layout.theme-dark) .mesh-orbs {
+    opacity: 0.5;
   }
 
   .glow-orb {
@@ -336,52 +375,138 @@
     border-radius: 50%;
   }
 
-  .orb-pink {
-    width: 320px;
-    height: 320px;
-    background: #ff5ebc;
-    top: 10%;
-    left: 20%;
-    opacity: 0.6;
-    animation: pulse-pink 12s ease-in-out infinite;
+  .orb-mint-main {
+    width: 400px;
+    height: 400px;
+    background: #80ffcc;
+    top: 15%;
+    left: 25%;
+    opacity: 0.55;
+    animation: float-orb-mint 14s ease-in-out infinite;
   }
 
-  .orb-orange {
-    width: 280px;
-    height: 280px;
-    background: #ff8e53;
-    bottom: 15%;
+  .orb-mint-accent {
+    width: 350px;
+    height: 350px;
+    background: rgba(128, 255, 204, 0.85);
+    bottom: 10%;
     right: 25%;
-    opacity: 0.5;
-    animation: pulse-orange 10s ease-in-out infinite;
+    opacity: 0.45;
+    animation: float-orb-accent 16s ease-in-out infinite;
   }
 
-  .orb-yellow {
-    width: 250px;
-    height: 250px;
-    background: #ffea79;
-    top: 25%;
-    right: 15%;
-    opacity: 0.5;
-  }
-
-  .orb-blue {
+  .orb-cyan {
     width: 300px;
     height: 300px;
-    background: #5be0ff;
-    bottom: 10%;
+    background: #00f3ff;
+    bottom: 5%;
     left: 15%;
     opacity: 0.4;
+    animation: float-orb-cyan 12s ease-in-out infinite;
   }
 
-  @keyframes pulse-pink {
-    0%, 100% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.15) translate(30px, -20px); }
+  .orb-emerald {
+    width: 280px;
+    height: 280px;
+    background: #10b981;
+    top: 10%;
+    right: 15%;
+    opacity: 0.3;
+    animation: float-orb-emerald 15s ease-in-out infinite;
   }
 
-  @keyframes pulse-orange {
-    0%, 100% { transform: scale(1) translate(0, 0); }
-    50% { transform: scale(1.2) translate(-40px, 30px); }
+  @keyframes float-orb-mint {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(50px, -40px) scale(1.1); }
+    66% { transform: translate(-30px, 20px) scale(0.9); }
+  }
+
+  @keyframes float-orb-accent {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-60px, 30px) scale(1.15); }
+  }
+
+  @keyframes float-orb-cyan {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-40px, -30px) scale(0.95); }
+    66% { transform: translate(30px, 40px) scale(1.1); }
+  }
+
+  @keyframes float-orb-emerald {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(40px, -50px) scale(1.05); }
+  }
+
+  /* Dotted grid background overlay */
+  .bg-dot-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(128, 255, 204, 0.15) 1.2px, transparent 1.2px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(circle at 50% 50%, black 60%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at 50% 50%, black 60%, transparent 100%);
+    opacity: 0.8;
+    z-index: 2;
+  }
+
+  :global(.app-layout.theme-dark) .bg-dot-grid {
+    background-image: radial-gradient(rgba(128, 255, 204, 0.08) 1.2px, transparent 1.2px);
+    opacity: 0.6;
+  }
+
+  /* Floating particle system */
+  .floating-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 3;
+    pointer-events: none;
+  }
+
+  .floating-particle {
+    position: absolute;
+    bottom: -20px;
+    left: var(--x);
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: rgba(128, 255, 204, 0.45);
+    box-shadow: 0 0 8px rgba(128, 255, 204, 0.6);
+    opacity: 0;
+    animation: drift-up var(--t) linear infinite;
+    animation-delay: var(--d);
+  }
+
+  :global(.app-layout.theme-dark) .floating-particle {
+    background: rgba(128, 255, 204, 0.65);
+    box-shadow: 0 0 12px rgba(128, 255, 204, 0.9);
+  }
+
+  @keyframes drift-up {
+    0% {
+      transform: translateY(0) translateX(0) scale(0.5);
+      opacity: 0;
+    }
+    15% {
+      opacity: 0.6;
+    }
+    50% {
+      transform: translateY(-250px) translateX(25px) scale(1);
+      opacity: 0.8;
+    }
+    85% {
+      opacity: 0.4;
+    }
+    100% {
+      transform: translateY(-500px) translateX(-15px) scale(0.5);
+      opacity: 0;
+    }
   }
 
   /* Graphic Canvas styling */
