@@ -230,7 +230,7 @@
       <span class="hero-accent-you">You</span> In Mind.
     </h1>
     <p class="hero-subtext">
-      Accept payments from Flot, Mobile Money, Visa, and Mastercard — with instant settlement into your Flot Business account. Local or global — one platform.
+      Accept payments from Flot, Mobile Money, Visa, and Mastercard, with instant settlement into your Flot Business account. Local or global, one platform.
     </p>
 
     <!-- Double-Pill CTA (Centered) -->

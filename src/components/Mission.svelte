@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
 
-  const missionText = "Our mission is to empower African businesses with financial solutions that connect them to global commerce.";
+  const missionText = "Flot is a secure digital financial platform that helps individuals and businesses manage payments, transfers, and everyday financial transactions from a single app.";
   const words = missionText.split(" ");
   
   let sectionEl;

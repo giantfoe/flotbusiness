@@ -239,7 +239,7 @@
 
 <style>
   /* ════════════════════════════════════
-     FLOT CARD — Base
+     FLOT CARD: Base
      ════════════════════════════════════ */
   .flot-card {
     position: relative;

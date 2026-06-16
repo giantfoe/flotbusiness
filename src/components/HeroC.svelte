@@ -8,16 +8,16 @@
 
   const features = [
     {
-      title: "Smart Payments",
-      desc: "Easily create, customize, and share payment links or scan QR codes instantly."
+      title: "All in One App",
+      desc: "Manage payments, transfers, your wallet, and Visa cards from a single, simple app."
     },
     {
-      title: "Instant Settlement",
-      desc: "Funds settle directly into your wallet or bank account immediately without delays."
+      title: "Secure by Design",
+      desc: "Advanced authentication and verification measures help protect your account and every transaction."
     },
     {
-      title: "Physical & Virtual Cards",
-      desc: "Issue credit and debit cards to your team, manage limits, and track spending."
+      title: "For Individuals & Businesses",
+      desc: "Built to help consumers and businesses across Africa access modern financial services."
     }
   ];
 
@@ -34,7 +34,7 @@
       <span class="hero-accent-you">You</span> In Mind.
     </h1>
     <p class="hero-c-description">
-      Take control of your revenue with our all-in-one payments app. Accept money, track progress, and focus on growing your business—without the overwhelm.
+      Send money, receive funds, get a virtual or physical Visa card, and manage your finances securely, all from a single app.
     </p>
 
     <!-- Double-Pill CTA (Centered) -->
@@ -122,14 +122,14 @@
   <div class="split-info-section">
     <div class="split-heading-col">
       <h2 class="split-heading">
-        Designed to Help <br />
-        You Grow <i>With Less Friction</i>
+        Designed for <br />
+        Individuals <i>and Businesses</i>
       </h2>
     </div>
-    
+
     <div class="split-paragraph-col">
       <p class="split-paragraph">
-        Our business app is built for modern merchants who want to stay organized, focused, and in full control of their cashflow. Settle immediately and pay suppliers securely.
+        Flot helps consumers and businesses participate in the digital economy through modern payment solutions, financial tools, and secure transaction services.
       </p>
     </div>
   </div>

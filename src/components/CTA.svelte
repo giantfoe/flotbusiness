@@ -11,7 +11,9 @@
     <!-- Left Column: Unlock global commerce + Checklists -->
     <div class="cta-left">
       <h2 class="cta-heading">Unlock global commerce<br />with local simplicity.</h2>
-      
+
+      <p class="cta-security-note">Your security is our priority. Flot uses industry-standard security measures and verification processes to help protect your account and transactions.</p>
+
       <div class="cta-checklist">
         <div class="check-item">
           <div class="check-circle">✓</div>
@@ -68,7 +70,7 @@
         <img src={logoImg} class="logo-img-footer" alt="Flot logo" />
         <span class="logo-text">Flot</span>
       </div>
-      <p class="brand-pitch">Sierra Leone's leading fintech payment platform connecting local merchants to global commerce.</p>
+      <p class="brand-pitch">Flot is operated by Open Hubb SL Limited, a financial technology company focused on expanding access to secure digital financial services and payment solutions across Africa.</p>
     </div>
     
     <div class="footer-col address-col">
@@ -126,6 +128,14 @@
     line-height: 1.08;
     font-weight: 600;
     letter-spacing: -0.04em;
+  }
+
+  .cta-security-note {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text-sec);
+    max-width: 440px;
+    margin-top: -8px;
   }
 
   .cta-checklist {
