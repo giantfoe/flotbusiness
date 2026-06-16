@@ -117,7 +117,7 @@
               {/if}
             </div>
             <div class="bullet-text">
-              <span class="bullet-title">{feature.title}</span> — {feature.desc}
+              <span class="bullet-title">{feature.title}</span>: {feature.desc}
             </div>
           </li>
         {/each}

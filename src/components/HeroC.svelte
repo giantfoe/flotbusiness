@@ -34,7 +34,7 @@
       <span class="hero-accent-you">You</span> In Mind.
     </h1>
     <p class="hero-c-description">
-      Send money, receive funds, get a virtual or physical Visa card, and manage your finances securely — all from a single app.
+      Send money, receive funds, get a virtual or physical Visa card, and manage your finances securely, all from a single app.
     </p>
 
     <!-- Double-Pill CTA (Centered) -->
