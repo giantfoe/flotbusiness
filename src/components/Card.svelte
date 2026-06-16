@@ -58,11 +58,15 @@
   on:mouseenter={handleMouseEnter}
   on:mouseleave={handleMouseLeave}
   style:transform={interactive ? `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${isHovered ? 1.04 : 1}, ${isHovered ? 1.04 : 1}, 1)` : ''}
+  style:--shadow-dx={interactive ? `${-rotateY * 1.2}px` : '0px'}
+  style:--shadow-dy={interactive ? `${rotateX * 1.2}px` : '0px'}
 >
   {#if type === 'black' || type === 'glass'}
     <img src={cardSilverImg} class="card-image-render" alt="Flot Visa Platinum Card" />
+    <div class="card-edge-highlight"></div>
   {:else if type === 'green' || type === 'yellow'}
     <img src={cardGreenImg} class="card-image-render" alt="Flot Visa Classic Card" />
+    <div class="card-edge-highlight"></div>
   {:else}
     {#if type === 'glass-back'}
       <!-- Back of the card -->
@@ -89,7 +93,8 @@
   {#if showGlare}
     <div 
       class="glare-layer" 
-      style:background="radial-gradient(circle at {glareX}px {glareY}px, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 65%)"
+      style:--glare-x={`${glareX}px`}
+      style:--glare-y={`${glareY}px`}
     ></div>
   {/if}
 </div>
@@ -545,7 +550,15 @@
     height: 100%;
     pointer-events: none;
     z-index: 9;
-    mix-blend-mode: overlay;
+    mix-blend-mode: color-dodge;
+    opacity: 0.85;
+    background: radial-gradient(
+      circle at var(--glare-x, 50%) var(--glare-y, 50%),
+      rgba(255, 255, 255, 0.45) 0%,
+      rgba(128, 255, 204, 0.22) 20%,
+      rgba(0, 240, 255, 0.15) 40%,
+      rgba(255, 255, 255, 0) 70%
+    );
   }
 
   .brand-logo-svg {
@@ -599,14 +612,43 @@
     border-radius: inherit;
   }
 
+  /* Bevel Edge Highlight Overlay simulating plastic card cut */
+  .card-edge-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 8;
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.3),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-yellow .card-edge-highlight, .card-green .card-edge-highlight {
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 
+      inset 0 1px 1px rgba(255, 255, 255, 0.45),
+      inset 0 -1px 1px rgba(0, 0, 0, 0.12);
+  }
+
   .credit-card.card-img-variant {
     padding: 0;
     background: none !important;
     border: none !important;
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.18);
+    /* Shifting drop shadow */
+    box-shadow: 
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      var(--shadow-dx, 0px) calc(12px + var(--shadow-dy, 0px)) 36px rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
   }
 
   .credit-card.card-img-variant.hovered {
-    box-shadow: 0 24px 56px rgba(0, 0, 0, 0.35);
+    box-shadow: 
+      0 4px 8px rgba(0, 0, 0, 0.12),
+      var(--shadow-dx, 0px) calc(20px + var(--shadow-dy, 0px)) 48px rgba(0, 0, 0, 0.28);
   }
 </style>
